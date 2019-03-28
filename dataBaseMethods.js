@@ -8,7 +8,11 @@ const getDishes = async () => {
 }
 
 const getDish = async (id) => {
-    const dishes = await db('dishes').where({ id });
+    const dishes = await db({ d: 'dishes' })
+        .where('d.id', id)
+        .select('d.id', 'd.name', { recipe_name: 'recipes.name '})
+        .innerJoin('dish-recipe', 'd.id', 'dish-recipe.dish_id')
+        .innerJoin('recipes', 'recipes.id', 'dish-recipe.recipe_id')
     return dishes;
 }
 
@@ -31,6 +35,20 @@ const getRecipes = async () => {
     return recipes;
 }
 
+const addRecipe = async (recipe) => {
+    const newRecipe = await db
+        .insert(recipe)
+        .into('recipes');
 
+    return newRecipe;
+}
 
-getRecipes();
+getDish(1)
+
+module.exports = {
+    getDishes,
+    getDish,
+    addDish,
+    getRecipes,
+    addRecipe
+}
