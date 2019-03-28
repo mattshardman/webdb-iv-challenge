@@ -1,9 +1,9 @@
 exports.seed = (knex, Promise) => {
-    return knex('cohorts').del()
+    return knex('dishes').del()
         .then(() => {
-            return knex('cohorts').insert([
-                { name: "WEBEU1" },
-                { name: "WEBEU2" }
+            return knex('dishes').insert([
+                { id: 1, name: "Curry" },
+                { id: 2, name: "Pie" }
             ])
         })
 }
