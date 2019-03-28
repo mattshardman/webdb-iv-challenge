@@ -10,12 +10,18 @@
     "ingredients-table": "knex migrate:make createIngredientsTable",
     "dish-recipe-table": "knex migrate:make createDishRecipeTable",
     "recipe-ingredient-table": "knex migrate:make createRecipeIngredientsTable",
+    "run-migrations": "yarn dishes-table && yarn recipes-table && yarn ingredients-table && yarn dish-recipe-table && yarn recipe-ingredient-table",
     "seed-dishes": "knex seed:make 01-dishes",
     "seed-recipes": "knex seed:make 02-recipes",
     "seed-ingredients": "knex seed:make 03-ingredients",
+    "seed-dish-recipe": "knex seed:make 04-dish-recipe",
+    "seed-recipe-ingredients": "knex seed:make 05-recipe-ingredients",
     "run-seed-dishes": "knex seed:run 01-dishes",
     "run-seed-recipes": "knex seed:run 02-recipes",
     "run-seed-ingredients": "knex seed:run 03-ingredients",
+    "run-seed-dishes-recipes": "knex seed:run 04-dishes-recipes",
+    "run-seed-recipe-ingredients": "knex seed:run 05-recipes-ingredients",
+    "run-seeds": "yarn run-seed-dishes && yarn run-seed-recipes && yarn run-seed-ingredients && yarn run-seed-dishes-recipes && yarn run-seed-recipe-ingredients",
     "rollback": "knex migrate:rollback"
   },
   "repository": {
